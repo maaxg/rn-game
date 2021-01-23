@@ -8,8 +8,8 @@ const initialState = {
     version: -1,
 }
 
-const applicationReducer = (state = initialState, aciton) =>{
-    switch(aciton.type){
+const applicationReducer = (state = initialState, action) =>{
+    switch(action.type){
         case INIT_APPLICATION: {
             return {
                 status: true,

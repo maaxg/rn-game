@@ -8,32 +8,34 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
-  Text,
-  StatusBar,
 } from 'react-native';
-
 import { Provider } from 'react-redux'
 import configureStore from './src/redux/store'
-
+import { initialiseApplication } from './src/redux/actions/application.actions'
+import VersionTag from './src/components/other'
 const store = configureStore()
-
+store.dispatch(initialiseApplication())
 
 const App = ({ }) => {
   return (
     <Provider store={store}>
-
-      <Text>Open up to work on my app</Text>
+      <View style={styles.container}>
+        <VersionTag />
+      </View>
 
     </Provider>
   );
 };
 
 const styles = StyleSheet.create({
-
+  container:{
+    flex: 1,
+    backgroundColor: '#FFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default App;
