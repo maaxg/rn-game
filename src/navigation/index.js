@@ -7,7 +7,7 @@ import SceneAppLoading from '../scenes/auth/sceneAppLoading'
 import SceneLogin from '../scenes/auth/sceneLogin'
 import SceneHome from '../scenes/auth/sceneHome'
 import SceneSettings from '../scenes/auth/sceneSettings'
-import SceneGameHome from '../scenes/game/sceneGameHome'
+import SceneGameHome from '../scenes/game/scenegameHome'
 
 const Stack = createStackNavigator()
 

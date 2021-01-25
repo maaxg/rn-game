@@ -1,41 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import configureStore from './src/redux/store'
-import { initialiseApplication } from './src/redux/actions/application.actions'
-import VersionTag from './src/components/other'
-const store = configureStore()
-store.dispatch(initialiseApplication())
+import { PersistGate } from 'redux-persist/integration/react'
+import { enableScreens } from 'react-native-screens'
+import store, { persistor } from './src/redux/store'
+import Navigation from './src/navigation'
+import SceneAppLoading from './src/scenes/auth/sceneAppLoading'
 
-const App = ({ }) => {
-  return (
-    <Provider store={store}>
-      <View style={styles.container}>
-        <VersionTag />
-      </View>
+enableScreens()
 
-    </Provider>
-  );
-};
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default App;
+export default function App() {
+    return (
+        <Provider store={store}>
+            <PersistGate loading={<SceneAppLoading />} persistor={persistor}>
+                <StatusBar hidden />
+                <Navigation />
+            </PersistGate>
+        </Provider>
+    )
+}

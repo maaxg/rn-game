@@ -13,8 +13,8 @@ const applicationReducer = (state = initialState, action) =>{
         case INIT_APPLICATION: {
             return {
                 status: true,
-                version, 
-                name
+                version: version, 
+                name: name
             }
         }
         default: {
